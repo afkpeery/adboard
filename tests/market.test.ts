@@ -4,6 +4,7 @@ import {
   BILLBOARDS, createCampaign, minimumBid, quotePlacement, validateCampaign,
   type CampaignInput,
 } from '../lib/market.ts';
+import { CITY_SLOT_IDS, BUILDING_LAYOUT, CITY_WIDTH, CITY_HEIGHT } from '../lib/city-layout.ts';
 
 const valid: CampaignInput = {
   name: 'Launch campaign', url: 'https://example.com/launch',
@@ -58,7 +59,14 @@ test('drafts are validated, normalized, quoted and unique without purchasing inv
 });
 
 test('demo inventory has unique IDs, sensible dimensions and HTTPS sample destinations', () => {
-  assert.equal(BILLBOARDS.length, 8);
+  assert.equal(BILLBOARDS.length, 18);
+  assert.deepEqual([...CITY_SLOT_IDS].sort(), BILLBOARDS.map(item=>item.id).sort());
+  assert.equal(new Set(CITY_SLOT_IDS).size, CITY_SLOT_IDS.length);
+  for (const b of BUILDING_LAYOUT) {
+    assert.ok(b.width>0&&b.height>0&&b.depth>0&&b.rise>0);
+    assert.ok(b.x>=0&&b.y-b.rise>=0&&b.x+b.width<=CITY_WIDTH&&b.y+b.height<=CITY_HEIGHT);
+    for(const slot of b.slots) assert.ok(slot.x>=0&&slot.y>=0&&slot.width>0&&slot.height>0&&slot.x+slot.width<=1.001&&slot.y+slot.height<=1.001);
+  }
   assert.equal(new Set(BILLBOARDS.map(item => item.id)).size, BILLBOARDS.length);
   for (const item of BILLBOARDS) {
     assert.equal(new URL(item.website).protocol, 'https:');
