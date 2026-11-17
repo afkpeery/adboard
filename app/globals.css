@@ -20,3 +20,5 @@
 @media(min-width:1600px){.city-stage{height:clamp(770px,81vh,960px)}.city-caption h2{font-size:29px}.intro{padding-top:33px;padding-bottom:29px}}
 @media(max-width:1000px){.city-stage{height:700px}.city-caption h2{font-size:24px}}
 @media(max-width:760px){.city-stage{height:650px;border-radius:9px}.stage-top{top:15px;left:13px;right:13px;gap:6px}.district-label{font-size:7px;letter-spacing:.5px}.view-switch button{font-size:9px;padding:6px 7px}.stage-bottom{left:17px;right:15px;bottom:18px}.city-caption h2{font-size:22px;line-height:1.15}.city-caption-eyebrow{font-size:7px;letter-spacing:1.4px}.selected-footprint{font-size:12px}.city-help{font-size:9px;padding-top:12px}}
+
+.art-spotlight{background:linear-gradient(135deg,#21301b,#354c26);color:#cefa70}.art-spotlight .art-ring{background:transparent;border:1px dashed #cefa7080;box-shadow:none}

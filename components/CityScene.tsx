@@ -81,14 +81,16 @@ export default function CityScene({zoom,view,filter,district='All districts',que
     const preference=window.matchMedia('(prefers-reduced-motion: reduce)');const update=()=>setSystemMotion(preference.matches);update();preference.addEventListener('change',update);
     return()=>{resize.disconnect();preference.removeEventListener('change',update);};
   },[]);
-  const scale=Math.max(.6,Math.min(size.width/CITY_WIDTH,(size.height-25)/CITY_HEIGHT))*(zoom>5?zoom/100:zoom);
-  const bounds={x:Math.max(0,(CITY_WIDTH*scale-size.width)/2)+45,y:Math.max(0,(CITY_HEIGHT*scale-size.height)/2)+45};
+  const mapRows=Math.max(...DISTRICTS.map(d=>Math.ceil(BILLBOARDS.filter(ad=>ad.district===d).length/2)));
+  const worldHeight=view==='map'?Math.max(CITY_HEIGHT,120+mapRows*260):CITY_HEIGHT;
+  const scale=Math.max(.6,Math.min(size.width/CITY_WIDTH,(size.height-25)/worldHeight))*(zoom>5?zoom/100:zoom);
+  const bounds={x:Math.max(0,(CITY_WIDTH*scale-size.width)/2)+45,y:Math.max(0,(worldHeight*scale-size.height)/2)+45};
   const clampPan=(x:number,y:number)=>({x:Math.max(-bounds.x,Math.min(bounds.x,x)),y:Math.max(-bounds.y,Math.min(bounds.y,y))});
   useEffect(()=>{setPan(p=>({x:Math.max(-bounds.x,Math.min(bounds.x,p.x)),y:Math.max(-bounds.y,Math.min(bounds.y,p.y))}));},[bounds.x,bounds.y]);
   const matches=(ad:Billboard)=>['all','all categories',''].includes(filter.toLowerCase())||ad.category===filter;
   const highlighted=(ad:Billboard)=>matches(ad)&&(['all','all districts',''].includes(district.toLowerCase())||ad.district===district)&&`${ad.brand} ${ad.headline} ${ad.category} ${ad.district}`.toLowerCase().includes(query.toLowerCase());
-  const focusPosition=(x:number,y:number,event:React.FocusEvent<HTMLButtonElement>)=>{if(event.currentTarget.matches(':focus-visible'))setPan(clampPan(-(x-CITY_WIDTH/2)*scale,-(y-CITY_HEIGHT/2)*scale));};
-  const stageStyle={transform:`translate(calc(-50% + ${pan.x}px),calc(-50% + ${pan.y}px)) scale(${scale})`} as CSSProperties;
+  const focusPosition=(x:number,y:number,event:React.FocusEvent<HTMLButtonElement>)=>{if(event.currentTarget.matches(':focus-visible'))setPan(clampPan(-(x-CITY_WIDTH/2)*scale,-(y-worldHeight/2)*scale));};
+  const stageStyle={height:worldHeight,transform:`translate(calc(-50% + ${pan.x}px),calc(-50% + ${pan.y}px)) scale(${scale})`} as CSSProperties;
   const finishDrag=(event:React.PointerEvent<HTMLDivElement>)=>{drag.current=null;setDragging(false);if(event.currentTarget.hasPointerCapture(event.pointerId))event.currentTarget.releasePointerCapture(event.pointerId);};
   const moving=reduce||systemMotion;
   return <div ref={host} className={`city-scene city-volume ${view==='map'?'city-map':''} ${moving?'city-still':''} ${dragging?'is-dragging':''}`} tabIndex={0} role="region" aria-label="Interactive advertising city. Drag or use arrow keys to explore. Tab to a billboard and press Enter to discover it."

@@ -69,6 +69,7 @@ export const BUILDING_LAYOUT: BuildingLayout[] = [
     depth: 90, rise: 50, layer: 3, accent: '#a68bfa', crown: 'spire',
     slots: [
       { billboardId: 'nova', face: 'front', x: 0.035, y: 0.1, width: 0.93, height: 0.63, variant: 'hero' },
+      { billboardId: 'spotlight', face: 'front', x: 0.035, y: 0.8, width: 0.93, height: 0.12, variant: 'ribbon' },
       { billboardId: 'flux', face: 'side', x: 0.1, y: 0.12, width: 0.8, height: 0.6, variant: 'portrait' },
     ],
   },

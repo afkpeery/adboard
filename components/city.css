@@ -137,3 +137,5 @@
 .creative-atlas .creative-headline{font-size:26px;letter-spacing:-.7px;overflow-wrap:anywhere}.surface-haven .creative-headline{font-size:18px;line-height:1}.creative-micro.creative-available .creative-brand{font-size:12px}
 
 .surface-mint .creative-headline{font-size:17px;line-height:1;letter-spacing:-.5px}
+
+.surface-spotlight .creative-brand{font-size:19px;letter-spacing:-.6px}.surface-spotlight .creative-headline,.surface-spotlight .creative-footer{display:none}.surface-spotlight .creative-plus{top:11px;right:29px;width:22px;height:22px}.surface-spotlight .creative-arrow{margin-right:3px}

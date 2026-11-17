@@ -188,6 +188,15 @@ export const BILLBOARDS: Billboard[] = [
     description: 'A fictional personal finance brand on a compact street-level display. An illustrative campaign only; no financial products or services are offered.',
     promotion: 'See the bigger picture',
   },
+  {
+    id: 'spotlight', brand: 'Your next spotlight', headline: 'Make your next move a big one.',
+    tagline: 'A fresh canvas in the heart of the city.', category: 'Creative', district: 'Central Square',
+    size: '1000 × 250', width: 1000, height: 250, dailyPrice: 81,
+    impressions: 86400, ctr: 0, color: '#cefa70', status: 'available',
+    website: 'https://example.com/#spotlight',
+    description: 'An available wide-format screen on the lower face of the flagship building in Central Square. Save the space or create a campaign draft to preview your brand and budget. This is illustrative inventory, with no reservation or charge.',
+    promotion: 'Put your next big idea in the spotlight',
+  },
 ];
 
 export const billboards = BILLBOARDS;
