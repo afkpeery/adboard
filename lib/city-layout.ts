@@ -1,6 +1,7 @@
 /** Logical scene coordinates. The viewport scales and pans this complete city. */
 export const CITY_WIDTH = 1600;
 export const CITY_HEIGHT = 940;
+export const SKY_SLOT_IDS = ['moon', 'sky-signal'] as const;
 
 export type CitySlotLayout = {
   billboardId: string;
@@ -79,6 +80,7 @@ export const BUILDING_LAYOUT: BuildingLayout[] = [
     slots: [
       { billboardId: 'arc', face: 'front', x: 0.05, y: 0.1, width: 0.9, height: 0.56, variant: 'portrait' },
       { billboardId: 'sol', face: 'front', x: 0.05, y: 0.76, width: 0.9, height: 0.2, variant: 'ribbon' },
+      { billboardId: 'rooftop', face: 'side', x: 0.1, y: 0.08, width: 0.8, height: 0.6, variant: 'portrait' },
     ],
   },
   {
@@ -132,6 +134,9 @@ export const BUILDING_LAYOUT: BuildingLayout[] = [
   },
 ];
 
-export const CITY_SLOT_IDS = BUILDING_LAYOUT.flatMap((building) =>
-  building.slots.map((slot) => slot.billboardId),
-);
+export const CITY_SLOT_IDS = [
+  ...BUILDING_LAYOUT.flatMap((building) =>
+    building.slots.map((slot) => slot.billboardId),
+  ),
+  ...SKY_SLOT_IDS,
+];

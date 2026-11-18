@@ -59,7 +59,7 @@ test('drafts are validated, normalized, quoted and unique without purchasing inv
 });
 
 test('demo inventory has unique IDs, sensible dimensions and HTTPS sample destinations', () => {
-  assert.equal(BILLBOARDS.length, 19);
+  assert.equal(BILLBOARDS.length, 22);
   assert.deepEqual([...CITY_SLOT_IDS].sort(), BILLBOARDS.map(item=>item.id).sort());
   assert.equal(new Set(CITY_SLOT_IDS).size, CITY_SLOT_IDS.length);
   for (const b of BUILDING_LAYOUT) {

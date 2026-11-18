@@ -197,6 +197,33 @@ export const BILLBOARDS: Billboard[] = [
     description: 'An available wide-format screen on the lower face of the flagship building in Central Square. Save the space or create a campaign draft to preview your brand and budget. This is illustrative inventory, with no reservation or charge.',
     promotion: 'Put your next big idea in the spotlight',
   },
+  {
+    id: 'moon', brand: 'Moon takeover', headline: 'Your brand. Beyond the skyline.',
+    tagline: 'An out-of-this-world canvas for your next idea.', category: 'Creative', district: 'Skyline Heights',
+    size: '500 × 500', width: 500, height: 500, dailyPrice: 45,
+    impressions: 92400, ctr: 0, color: '#e7d6ff', status: 'available',
+    website: 'https://example.com/#moon',
+    description: 'An available moon-inspired placement above Skyline Heights. Save the space or create a campaign draft to explore a lunar takeover. Traffic figures are illustrative demo estimates; creating a draft does not reserve inventory or trigger a charge.',
+    promotion: 'Take your next idea beyond the skyline',
+  },
+  {
+    id: 'sky-signal', brand: 'Sky signal', headline: 'Give the city a sign.',
+    tagline: 'Send your next big idea into the night.', category: 'Creative', district: 'Central Square',
+    size: '500 × 500', width: 500, height: 500, dailyPrice: 81,
+    impressions: 116800, ctr: 0, color: '#8ff5ff', status: 'available',
+    website: 'https://example.com/#sky-signal',
+    description: 'An available holographic-style sky display above Central Square. Save this city-wide signal or create a campaign draft to preview your message and budget. Traffic figures are illustrative demo estimates; creating a draft does not reserve inventory or trigger a charge.',
+    promotion: 'Let your brand light up the night',
+  },
+  {
+    id: 'rooftop', brand: 'Rooftop spotlight', headline: 'A new angle on attention.',
+    tagline: 'Put your next launch above the everyday.', category: 'AI & Tech', district: 'Neon District',
+    size: '250 × 1000', width: 250, height: 1000, dailyPrice: 54,
+    impressions: 87300, ctr: 0, color: '#f4e68c', status: 'available',
+    website: 'https://example.com/#rooftop',
+    description: 'An available tall rooftop placement in Neon District, built for a launch with an elevated point of view. Save the space or create a campaign draft to explore the portrait canvas. Traffic figures are illustrative demo estimates; creating a draft does not reserve inventory or trigger a charge.',
+    promotion: 'Give your next launch a higher profile',
+  },
 ];
 
 export const billboards = BILLBOARDS;

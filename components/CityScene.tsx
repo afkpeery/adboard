@@ -5,6 +5,7 @@ import { ArrowUpRight, Expand, MapPin, Plus, Sparkles } from 'lucide-react';
 import { BILLBOARDS, DISTRICTS, type Billboard } from '@/lib/market';
 import { BUILDING_LAYOUT, CITY_HEIGHT, CITY_WIDTH, type BuildingLayout } from '@/lib/city-layout';
 import CityAtmosphere from './CityAtmosphere';
+import SkyPlacements from './SkyPlacements';
 import './city.css';
 
 export interface CitySceneProps {
@@ -26,7 +27,7 @@ const distantTowers = Array.from({length: 28}, (_, i) => ({
 function Creative({ad,variant='portrait',side=false}:{ad:Billboard;variant?:string;side?:boolean}) {
   const available=ad.status==='available';
   return <div className={`billboard-creative creative-${ad.id} creative-${variant} ${available?'creative-available':''} ${side?'creative-side':''}`}>
-    <span className="creative-brand">{ad.id==='nova'&&<Sparkles size={23} strokeWidth={1.5}/>} {available?(ad.id==='vacant'?'Your brand.':ad.id==='blank'?'YOUR AD':ad.brand):ad.brand}<ArrowUpRight className="creative-arrow" size={17}/></span>
+    <span className="creative-brand">{ad.id==='nova'&&<Sparkles size={23} strokeWidth={1.5}/>} {side&&ad.id==='rooftop'?'ROOFTOP':available?(ad.id==='vacant'?'Your brand.':ad.id==='blank'?'YOUR AD':ad.brand):ad.brand}<ArrowUpRight className="creative-arrow" size={17}/></span>
     <span className="creative-motif" aria-hidden="true"><i/><i/><i/><i/></span>
     <strong className="creative-headline">{ad.headline}</strong>
     <span className="creative-footer">{available?'THIS SPOTLIGHT COULD BE YOURS':ad.tagline}<ArrowUpRight size={13}/></span>
@@ -98,8 +99,9 @@ export default function CityScene({zoom,view,filter,district='All districts',que
     onPointerDown={event=>{if((event.target as HTMLElement).closest('button,a')||event.button!==0)return;drag.current={x:event.clientX,y:event.clientY,panX:pan.x,panY:pan.y};event.currentTarget.setPointerCapture(event.pointerId);setDragging(true);}}
     onPointerMove={event=>{if(!drag.current)return;setPan(clampPan(drag.current.panX+event.clientX-drag.current.x,drag.current.panY+event.clientY-drag.current.y));}}
     onPointerUp={finishDrag} onPointerCancel={finishDrag}>
-    <div className="city-sky" aria-hidden="true"><div className="city-aura aura-violet"/><div className="city-aura aura-cyan"/><div className="city-moon"/><div className="sky-starfield"/><div className="city-searchlight searchlight-one"/><div className="city-searchlight searchlight-two"/></div>
+    <div className="city-sky" aria-hidden="true"><div className="city-aura aura-violet"/><div className="city-aura aura-cyan"/><div className="sky-starfield"/><div className="city-searchlight searchlight-one"/><div className="city-searchlight searchlight-two"/></div>
     <CityAtmosphere reducedMotion={moving}/>
+    {view==='perspective'&&<SkyPlacements onSelect={onSelect} highlighted={highlighted}/>}
     <div className="city-world" style={stageStyle}>
       {view==='perspective'?<>
         <div className="distant-skyline" aria-hidden="true">{distantTowers.map((b,i)=><div className="distant-tower" key={i} style={{left:b.x,top:b.y,width:b.width,height:b.height,'--distant-depth':`${b.depth}px`} as CSSProperties}><i/></div>)}</div>

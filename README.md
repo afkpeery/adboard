@@ -1,6 +1,6 @@
 # AdBoard™
 
-An interactive advertising-marketplace demo built with Next.js 15, React, TypeScript, Tailwind CSS, Three.js, GSAP, and Framer Motion. The homepage is an explorable neon city with digital billboard inventory. The expanded skyline contains 13 architectural prisms and 19 selectable ad surfaces: front façades, side screens, portrait towers, rooftop ribbons, and street kiosks. Roof planes, setbacks, window grids, structural edges, grounded shadows, and a lit street canyon give the buildings volume. City and map views share the same inventory and selection actions.
+An interactive advertising-marketplace demo built with Next.js 15, React, TypeScript, Tailwind CSS, Three.js, GSAP, and Framer Motion. The homepage is an explorable neon city with digital billboard inventory. The expanded skyline contains 13 architectural prisms and 22 selectable ad surfaces: front façades, side screens, portrait towers, rooftop ribbons, street kiosks, a moon takeover, and a projected sky signal. The existing 13 buildings and their prior ad rectangles retain their exact geometry. Roof planes, setbacks, window grids, structural edges, grounded shadows, and a lit street canyon give the buildings volume. City and map views share the same inventory and selection actions.
 
 ## Run locally
 
