@@ -13,6 +13,23 @@ npm run dev
 
 Visit the URL printed by Next.js. `npm run typecheck` checks TypeScript, `npm test` runs the domain tests, and `npm run build` generates the static site in `out/`. Because this project uses Next.js static export, `npm start` / `next start` is not the production serving command; serve the `out/` directory with a static host. Sites is configured to publish that output.
 
+## GitHub Pages
+
+The public app is deployed at https://afkpeery.github.io/adboard/. GitHub Pages serves the `main` branch's root. To publish an update:
+
+```sh
+npm ci
+npm test
+npm run build:pages
+git add .
+git commit -m "Update AdBoard"
+git push
+```
+
+`build:pages` builds the actual Next.js application with the `/adboard` base path, verifies that all 13 buildings and bundled assets are present, and copies the static export to the root that Pages serves. The generated `_next/`, `industries/`, `404/`, HTML, and metadata files are tracked for branch-based publishing. `.nojekyll` prevents Jekyll from replacing the app with a README page or omitting underscore-prefixed assets. `.github-pages-files.json` records only the generated paths managed by the publishing script.
+
+A default `npm run build` retains the root path and original Sites origin for the existing private preview. Internal navigation uses Next.js links so both hosting paths work. No building image download is needed: the skyline is rendered from the bundled SVG, CSS, and Three.js code.
+
 ## What this version does
 
 The app demonstrates interactive city exploration, billboard discovery, inventory pricing, campaign planning, sample bidding, advertiser discovery, saved campaigns, and watchlists. Demo campaign and preference state uses this browser's localStorage. It is device-local, can be cleared, and is not a shared marketplace database. Seed campaigns and their performance figures are illustrative. Campaigns can be followed, saved, and voted on, and campaign drafts preserve their selected billboard placement. Bids do not compete with real advertisers, and no funds are transferred or payment details collected.

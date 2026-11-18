@@ -3,8 +3,9 @@ import type { MetadataRoute } from "next";
 export const dynamic = "force-static";
 
 export default function robots(): MetadataRoute.Robots {
+  const origin = (process.env.NEXT_PUBLIC_SITE_URL || "https://adboard-neon-city.nuttysugar21.chatgpt.site").replace(/\/+$/, "");
   return {
     rules: { userAgent: "*", allow: "/" },
-    sitemap: "https://adboard-neon-city.nuttysugar21.chatgpt.site/sitemap.xml",
+    sitemap: `${origin}/sitemap.xml`,
   };
 }

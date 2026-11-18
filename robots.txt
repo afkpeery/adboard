@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://afkpeery.github.io/adboard/sitemap.xml

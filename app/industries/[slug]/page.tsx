@@ -72,7 +72,7 @@ const industries = {
 
 type IndustrySlug = keyof typeof industries;
 type PageProps = { params: Promise<{ slug: string }> };
-const origin = "https://adboard-neon-city.nuttysugar21.chatgpt.site";
+const origin = (process.env.NEXT_PUBLIC_SITE_URL || "https://adboard-neon-city.nuttysugar21.chatgpt.site").replace(/\/+$/, "");
 
 function isIndustrySlug(slug: string): slug is IndustrySlug {
   return Object.hasOwn(industries, slug);
@@ -91,7 +91,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${industry.name} advertising`,
     description: industry.description,
-    alternates: { canonical: `/industries/${slug}/` },
+    alternates: { canonical: `${origin}/industries/${slug}/` },
     openGraph: { title: `${industry.name} advertising | AdBoard™`, description: industry.description, url: `${origin}/industries/${slug}/`, type: "website" },
   };
 }

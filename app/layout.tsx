@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
 
-const origin = "https://adboard-neon-city.nuttysugar21.chatgpt.site";
+const origin = (process.env.NEXT_PUBLIC_SITE_URL || "https://adboard-neon-city.nuttysugar21.chatgpt.site").replace(/\/+$/, "");
 
 export const metadata: Metadata = {
   metadataBase: new URL(origin),
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description:
     "Explore a neon city of brands. Discover campaigns, compare digital billboard space, and plan your next big moment on AdBoard.",
   applicationName: "AdBoard",
-  alternates: { canonical: "/" },
+  alternates: { canonical: `${origin}/` },
   openGraph: {
     type: "website",
     locale: "en_US",

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>https://afkpeery.github.io/adboard/</loc>
+<changefreq>weekly</changefreq>
+<priority>1</priority>
+</url>
+<url>
+<loc>https://afkpeery.github.io/adboard/industries/ai-tech/</loc>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://afkpeery.github.io/adboard/industries/lifestyle/</loc>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://afkpeery.github.io/adboard/industries/gaming/</loc>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://afkpeery.github.io/adboard/industries/finance/</loc>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://afkpeery.github.io/adboard/industries/creative/</loc>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+</urlset>

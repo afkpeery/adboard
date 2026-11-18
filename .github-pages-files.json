@@ -1,0 +1,14 @@
+{
+  "basePath": "/adboard",
+  "siteUrl": "https://afkpeery.github.io/adboard",
+  "files": [
+    "404",
+    "404.html",
+    "_next",
+    "index.html",
+    "index.txt",
+    "industries",
+    "robots.txt",
+    "sitemap.xml"
+  ]
+}
